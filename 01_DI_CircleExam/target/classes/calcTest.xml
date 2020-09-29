@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 
+		CalcImpl calc = new CalcImpl(4);
+		calc.setSu1(9);
+ -->	
+ 
+<!--  	
+	<bean id="calc" class="sample4.CalcImpl">
+		<constructor-arg>
+			<value type="int">4</value>
+		</constructor-arg>
+		
+		<property name="su1">
+			<value type="int">9</value>
+		</property>
+	</bean>
+ -->	
+<!--  
+	<bean id="calc" class="sample4.CalcImpl">
+		<constructor-arg value="4"/>
+		<property name="su1" value="9"/>
+	</bean>
+ -->	
+ <bean id="calc" class="sample4.CalcImpl" c:su2="4"  p:su1="9"/>
+ 
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+

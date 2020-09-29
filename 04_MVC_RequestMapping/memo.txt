@@ -1,0 +1,10 @@
+webapp\WEB-INF 밑에 있는 jsp는 바로 실행할 수 없다.
+webapp\WEB-INF 밑에 있는 jsp는 컨트롤러에 의해서만 실행할 수 있다.
+
+webapp(WebContent) 밑에 있는 jsp는 바로 실행할 수 있다.
+
+[프로젝트 실행방법]
+프로젝트명 우클릭-Run As-Run on Server-주소창에 http://localhost:8080/ex/member/view 입력하면
+/WEB-INF/views/member/memberView.jsp 이곳으로 이동한다.
+
+
