@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.boardBean">
+
+	<insert id="Insertboard">
+		insert into
+		board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+		values(board_seq.nextval,?,?,?,?,?,board_seq.currval,?,?,?,?)
+	</insert>
+
+	<select id="Selectboard" resultType="Myboard">
+		select * from board
+
+		<if test="searchColumn == 'all'">
+			where area like #{searchWord} or style like #{searchWord}
+		</if>
+		<if test="searchColumn == 'subject'">
+			where area like #{searchWord}
+		</if>
+		<if test="searchColumn == 'writer'">
+			where style like #{searchWord}
+		</if>
+
+		order by num asc
+	</select>
+
+	<select id="GetOnedelete" resultType="Myboard">
+		select * from board
+		where
+		num=#{num} and passwd=#{passwd}
+	</select>
+	<select id="GetOneboard" resultType="Myboard">
+		select * from board
+		where
+		num=#{num}
+	</select>
+	<update id="content">
+	update board set readcount = readcount+1 where num=#{num}
+	</update>
+
+	<update id="Updateboard">
+		update board set name=#{name}, age=#{age},
+		area=#{area}, style=#{style}, price=#{price}
+		where num=#{num}
+	</update>
+
+	<delete id="Deleteboard">
+		delete board
+		where num=#{num}
+	</delete>
+
+	<select id="getboardCount" resultType="int"
+		parameterType="hashmap">
+		select count(*)
+		from board
+		<if test="searchColumn == 'area'">
+			where area like #{keyword}
+		</if>
+		<if test="searchColumn == 'style'">
+			where style like #{keyword}
+		</if>
+	</select>
+
+</mapper>
