@@ -40,14 +40,13 @@ public class AlbumListController {
 		
 		
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("whatColumn",whatColumn); //whatColumn=title
-		map.put("keyword", "%"+keyword+"%"); //keyword=%³¯%
-		
+		map.put("whatColumn",whatColumn); 
+		map.put("keyword", "%"+keyword+"%"); 
 		int totalCount = albumDao.getTotalCount(map);
 		System.out.println("totalCount : " + totalCount); 
 		
 		String url = request.getContextPath() +"/" +command ;
-		System.out.println("url : " + url);// /ex/list.ab
+		System.out.println("url : " + url);
 			
 		Paging pageInfo = new Paging(pageNumber,pageSize,totalCount,url,whatColumn,keyword);
 		System.out.println("offset : " + pageInfo.getOffset()); // 0

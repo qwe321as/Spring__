@@ -2,13 +2,20 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-  
 <!-- SqlMapConfig.xml -->
 
+<!--
+  re_step <=> restep
+db테이블에 언더바 있는 칼럼명과 bean에 없는 칼럼명을 동일하게 보도록 설정해줘야 함
+ -->
 <configuration>
-	<typeAliases>
-		<typeAlias alias="Myboard" type="board.model.boardBean"/> 
-	</typeAliases>
-</configuration>
 
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias = "MyBoard" type="board.model.BoardBean"/>
+	</typeAliases>
+
+</configuration>

@@ -1,22 +1,13 @@
 package board.model;
 
-public class boardBean {
-	private int num;
-	private	String writer;
-	private	String email;
-	private	String subject;
-	private	String passwd;
-	private	String regdate;
-	private	int readcount;
-	private	int ref;
-	private	int restep;
-	private	int relevel;
-	private	String content;
-	private	String ip;
-	public boardBean() {
+import java.sql.Date;
+
+public class BoardBean {
+
+	public BoardBean() {
 		super();
 	}
-	public boardBean(int num, String writer, String email, String subject, String passwd, String regdate, int readcount,
+	public BoardBean(int num, String writer, String email, String subject, String passwd, Date regdate, int readcount,
 			int ref, int restep, int relevel, String content, String ip) {
 		super();
 		this.num = num;
@@ -32,6 +23,18 @@ public class boardBean {
 		this.content = content;
 		this.ip = ip;
 	}
+	private int num;
+	private String writer;
+	private String email;
+	private String subject;
+	private String passwd;
+	private Date regdate;
+	private int readcount;
+	private int ref;
+	private int restep;
+	private int relevel;
+	private String content;
+	private String ip;
 	public int getNum() {
 		return num;
 	}
@@ -62,10 +65,10 @@ public class boardBean {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public String getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(String regdate) {
+	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 	public int getReadcount() {
@@ -104,5 +107,6 @@ public class boardBean {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
+	
 	
 }

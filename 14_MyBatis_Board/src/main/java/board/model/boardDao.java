@@ -9,50 +9,52 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import board.utility.Paging;
-@Component("myboardDao")
-public class boardDao {
+import utility.Paging;
+
+
+@Component("myBoardDao") 
+public class BoardDao {
+
+	String namespace="board.BoardBean";
 	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
+	public void insertBoard(BoardBean board) {
+		
+		sqlSessionTemplate.insert(namespace+".InsertBoard",board);
+		    
+	}  
 	
-	public int insertboard(boardBean board) {
-		int cnt = sqlSessionTemplate.insert("board.boardBean.Insertboard",board);
-		return cnt;
+	public List<BoardBean> getBoardList(Paging pageInfo, Map<String, String> map) {
+		 List<BoardBean> lists = new ArrayList<BoardBean>();
+		 RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		lists = sqlSessionTemplate.selectList(namespace+".SelectBoard",map,rowBounds);
+		return lists;   
 	}
-	
-	public List<boardBean> getboardList(Paging pageInfo ,Map<String,String> map) {
-		List<boardBean> lists = new ArrayList<boardBean>();
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
-		lists = sqlSessionTemplate.selectList("board.boardBean.Selectboard",map,rowBounds);
-		return lists;
-	}
-	public int getboardCount(Map<String,String> map) {
-		int cnt = sqlSessionTemplate.selectOne("board.boardBean.getboardCount",map);
-		return cnt;
-	}
-	
-	public boardBean getOneboard(int num) {
-		boardBean board =  null;
-		board = sqlSessionTemplate.selectOne("board.boardBean.GetOneboard",num);
+
+	public BoardBean getoneBoardList(int num) {
+		BoardBean bean = sqlSessionTemplate.selectOne(namespace+".SelectoneNum" ,num);
 		sqlSessionTemplate.update("board.boardBean.content",num);
-		return board;
+		return bean;
 	}
-	public int updateboard(boardBean board) {
-		int cnt = sqlSessionTemplate.update("board.boardBean.Updateboard",board);
+
+	public void deleteboard(int num) {
+		int cnt = sqlSessionTemplate.delete(namespace+".DeleteBoard",num);
+		System.out.println(cnt);
+		
+	}
+
+	public void updateBoard(BoardBean board) {
+		int cnt = sqlSessionTemplate.update(namespace+".UpdateBoard",board);
+	}
+
+	public int getTotalCount(Map<String, String> map) {
+		
+		int cnt = sqlSessionTemplate.selectOne(namespace+".GetTotalCount",map);
 		return cnt;
+		
 	}
-	
-	public boardBean deletepasswd(String passwd ) {
-		boardBean board =  null;
-		board = sqlSessionTemplate.selectOne("board.boardBean.GetOnedelete",passwd);
-		return board;
-		}
-	
-	public int deleteboard(int num) {
-		int cnt= sqlSessionTemplate.delete("board.boardBean.Deleteboard",num);
-		return cnt;
-	}
+
 
 }
