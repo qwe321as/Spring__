@@ -6,7 +6,7 @@
 	}
 	
 	function memberList(){
-		
+		location.href="list.me";
 	}
 </script>
 WEB-INF\member\MemberLoginForm.jsp<br><br><br>

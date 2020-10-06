@@ -1,19 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common.jsp" %> 
-    
-member\MemberList.jsp<br><br>
-
+<style type="text/css">
+	body{
+		text-align: center;
+	}
+	table{
+		margin : 0px auto;
+	}
+</style>
 <script type="text/javascript">
 	function insert(){
 		location.href='registerForm.me'; 
 	}
-</script>   
+</script>       
+member\MemberList.jsp<br><br>
 
+<a href="main.jsp">시작 페이지</a>
+<a href="">로그 아웃</a>
+
+
+<h2>회원 리스트 화면</h2>
 <form action="list.me" method="get">
 	<select name="whatColumn">
 		<option value="all">전체 검색
-		<option value="name">회원명
+		<option value="name">이름
 		<option value="gender">성별
 	</select>
 	<input type="text" name="keyword" value="여">
@@ -28,9 +39,9 @@ member\MemberList.jsp<br><br>
 	</tr>
 	
 	<tr>
-		<th>아이디</th>
+		<th>ID</th>
 		<th>이름</th>
-		<th>비밀번호</th>
+		<th>비번</th>
 		<th>성별</th>
 		<th>취미</th>
 		<th>주소</th>
@@ -58,13 +69,14 @@ member\MemberList.jsp<br><br>
 				${member.hobby }
 			</td>
 			<td>
-				${member.address1 }  ${member.address2 }
+				${member.address1 } ${member.address2 } 
 			</td>
 			<td>
 				${member.mpoint }
 			</td>
+			
 			<td>
-				<a href="delete.me?id=${member.id}">삭제
+				<a href="delete.me?id=${member.id }">삭제</a>
 			</td>
 			<td>
 				수정
@@ -74,4 +86,5 @@ member\MemberList.jsp<br><br>
 </table>
 
 ${pageInfo.pagingHtml } 
+
 

@@ -25,7 +25,20 @@
 		</if>
 		order by num desc
 	</select>
-	
+	<insert id="insertData">
+	insert into products(num, name, company, image, stock, price, contents, point, inputdate) 
+	values(seqprod.nextval, #{name}, #{company}, #{image}, #{stock}, #{price}, #{contents}, #{point}, #{inputdate} )	
+	</insert>
+	<select id="selectOne" resultType="MyProduct">
+	select * from products where num=#{num}	
+	</select>
+	<update id="update">
+	update products set name=#{name},company=#{company}, 
+	image=#{image},stock=#{stock},price=#{price},contents=#{contents},point=#{point},inputdate=#{inputdate} where num=#{num}
+	</update>
+	<delete id="delete">
+	delete from products where num=#{num}
+	</delete>
 </mapper>
 
 

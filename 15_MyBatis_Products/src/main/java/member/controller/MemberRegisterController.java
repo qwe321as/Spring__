@@ -16,7 +16,7 @@ import member.model.MemberDao;
 public class MemberRegisterController {
 	final String command = "registerForm.me";
 	final String getPage = "MemberRegisterForm";
-	final String gotoPage = "redirect:/list.me";
+	final String gotoPage = "redirect:/list.me"; // MemberListController
 	
 	@Autowired
 	MemberDao memberDao;

@@ -33,6 +33,20 @@ public class ProductDao {
 		lists = sqlSessionTemplate.selectList(namespace+".GetDataList",map,rowBounds);
 		return lists;
 	}
+	public void insertData(Product product) {
+		sqlSessionTemplate.insert(namespace+".insertData",product);	
+		}
+	public Product Content(String num) {
+		Product product = new Product();
+		product =sqlSessionTemplate.selectOne(namespace+".selectOne",num);
+		return product;
+	}
+	public void update(Product product) {
+		sqlSessionTemplate.update(namespace+".update",product);
+	}
+	public void delete(String num) {
+		sqlSessionTemplate.delete(namespace+".delete",num);
+	}
 }
 
 

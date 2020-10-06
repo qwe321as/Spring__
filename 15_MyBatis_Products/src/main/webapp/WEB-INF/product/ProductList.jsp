@@ -5,6 +5,9 @@
 	function insert(){
 		location.href='insert.prd'; 
 	}
+	function goupdate(num) {
+		location.href='update.prd?num='+num;
+	}
 </script>   
 ProductList.jsp<br><br>
 <form action="list.prd" method="get">
@@ -39,7 +42,7 @@ ProductList.jsp<br><br>
 			</td>
 			
 			<td>
-				${product.name }
+				<a href="detail.prd?num=${product.num}"> ${product.name }</a>
 			</td>
 			
 			<td>
@@ -49,10 +52,9 @@ ProductList.jsp<br><br>
 				${product.price }
 			</td>
 			<td>
-				삭제
+				<a href="delete.prd?num=${product.num}">삭제</a>
 			</td>
-			<td>
-				수정
+			<td><input type="button" value="수정" onclick="goupdate(${product.num})">
 			</td>
 		</tr> 
 	</c:forEach>
