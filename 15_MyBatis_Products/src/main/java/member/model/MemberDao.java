@@ -45,6 +45,12 @@ public class MemberDao {
 		member = sqlSessionTemplate.selectOne(namespace+".GetData",id);
 		return member;
 	}
+	public void updatepoint(String id, int num) {
+		Member m= new Member();
+		m.setId(id);
+		m.setMpoint(num);
+		sqlSessionTemplate.update(namespace+".updatepoint",m);
+	}
 }
 
 

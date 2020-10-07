@@ -18,7 +18,7 @@ public class ProductDetailViewController {
 	@Autowired
 	ProductDao dao;
 	@RequestMapping(command)
-	public String doaction(@RequestParam(value = "num", required = true) String num , Model model) {
+	public String doaction(@RequestParam(value = "num", required = true) int num , Model model) {
 		Product product = new Product();
 		product= dao.Content(num);
 		System.out.println(product.getName());

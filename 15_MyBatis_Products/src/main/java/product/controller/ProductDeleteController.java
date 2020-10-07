@@ -30,7 +30,7 @@ ProductDao dao;
 @Autowired
 ServletContext servletContext;
 @RequestMapping(command)
-public String doAction(@RequestParam("num") String num, Model model, HttpSession session) throws IllegalStateException, IOException {
+public String doAction(@RequestParam("num") int num, Model model, HttpSession session) throws IllegalStateException, IOException {
 	if (session.getAttribute("loginInfo")==null) {
 		session.setAttribute("destination", "redirect:/update.prd");
 		return "redirect:/loginForm.me";

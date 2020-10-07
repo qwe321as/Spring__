@@ -13,7 +13,8 @@ table {
 
 <table border="1">
    <tr>
-      <td rowspan="6">		<img alt="상품이미지" width="100px" height="100px" src="<%=request.getContextPath() %>/resources/${product.image}">
+      <td rowspan="6">		
+      <img alt="상품이미지" width="100px" height="100px" src="<%=request.getContextPath() %>/resources/${product.image}">
       </td>
       <td>상품명</td>
       <td>${product.name}</td>
@@ -34,9 +35,11 @@ table {
 	</tr>
 <tr>
 		<th>주문수량</th>
-		<td>주문수량: <form action="" method="post">
-				<input type="text" name="orderqty">
+		<td>주문수량: <form action="add.mall" method="post">
+				<input type="hidden" name="num" value="${product.num }">
+				<input type="text" name="orderqty" value="1">
 <input type="submit" value="주문"> </form></td>
+<!-- addmall=>cartaddcontroller -->
 	</tr>
 <tr>
 		<td colspan="3"><a href="list.prd">상품 리스트</a></td> </tr>

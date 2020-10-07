@@ -41,6 +41,9 @@
 		select * from members
 		where id=#{id}
 	</select>
+	<update id="updatepoint">
+	update members set mpoint=mpoint+#{mpoint} where id=#{id}
+	</update>
 </mapper>
 
 

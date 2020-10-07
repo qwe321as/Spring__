@@ -36,7 +36,7 @@ public class ProductDao {
 	public void insertData(Product product) {
 		sqlSessionTemplate.insert(namespace+".insertData",product);	
 		}
-	public Product Content(String num) {
+	public Product Content(int num) {
 		Product product = new Product();
 		product =sqlSessionTemplate.selectOne(namespace+".selectOne",num);
 		return product;
@@ -44,8 +44,14 @@ public class ProductDao {
 	public void update(Product product) {
 		sqlSessionTemplate.update(namespace+".update",product);
 	}
-	public void delete(String num) {
+	public void delete(int num) {
 		sqlSessionTemplate.delete(namespace+".delete",num);
+	}
+	public void updateStock(Integer pnum,Integer qty){
+		Product bean = new Product();
+		bean.setNum(pnum);
+		bean.setStock(qty);
+		sqlSessionTemplate.update(namespace+".updateStock",bean);
 	}
 }
 

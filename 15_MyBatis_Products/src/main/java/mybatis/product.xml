@@ -8,37 +8,45 @@
 		<if test="whatColumn=='name'">
 			where name like #{keyword}
 		</if>
-		
+
 		<if test="whatColumn=='contens'">
 			where contens like #{keyword}
 		</if>
 	</select>
-	
+
 	<select id="GetDataList" resultType="MyProduct">
 		select * from products
 		<if test="whatColumn=='name'">
 			where name like #{keyword}
 		</if>
-		
+
 		<if test="whatColumn=='contens'">
 			where contens like #{keyword}
 		</if>
 		order by num desc
 	</select>
 	<insert id="insertData">
-	insert into products(num, name, company, image, stock, price, contents, point, inputdate) 
-	values(seqprod.nextval, #{name}, #{company}, #{image}, #{stock}, #{price}, #{contents}, #{point}, #{inputdate} )	
+		insert into products(num, name, company, image, stock, price, contents,
+		point, inputdate)
+		values(seqprod.nextval, #{name}, #{company}, #{image}, #{stock}, #{price}, #{contents},
+		#{point}, #{inputdate} )
 	</insert>
 	<select id="selectOne" resultType="MyProduct">
-	select * from products where num=#{num}	
+		select * from products where num=#{num}
 	</select>
 	<update id="update">
-	update products set name=#{name},company=#{company}, 
-	image=#{image},stock=#{stock},price=#{price},contents=#{contents},point=#{point},inputdate=#{inputdate} where num=#{num}
+		update products set name=#{name},company=#{company},
+		image=#{image},stock=#{stock},price=#{price},contents=#{contents},point=#{point},inputdate=#{inputdate}
+		where num=#{num}
 	</update>
 	<delete id="delete">
-	delete from products where num=#{num}
+		delete from products where num=#{num}
 	</delete>
+
+	<update id="updateStock"  >
+		update products set stock = stock-#{stock} where num = #{num}
+	</update>
+
 </mapper>
 
 

@@ -3,6 +3,14 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="order.model.Order" >
+<insert id="insert">
+insert into orders values(seqoid.nextval,#{id},sysdate)
+</insert>
+
+<select id="getMaxoid" resultType="int">
+select max(oid) from orders 
+</select>
+
 </mapper>
 
 

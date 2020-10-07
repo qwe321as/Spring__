@@ -1,6 +1,5 @@
 package product.model;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Length;
@@ -20,7 +19,7 @@ public class Product {
 	@Min(message = "가격은 최소 3000원 이상 이여야 합니다.",value = 3000)
 	private int price ;
 	private String category ;
-	@Length(max = 5,min = 3,message = "상품에 대한 설명은 최소3, 최대 5자리 입니다.")
+	@Length(max = 10,min = 5,message = "상품에 대한 설명은 최소3, 최대 10자리 입니다.")
 	private String contents ;
 	private int point ;
 	private String inputdate ;

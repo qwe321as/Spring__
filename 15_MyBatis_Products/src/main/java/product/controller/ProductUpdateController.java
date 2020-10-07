@@ -31,7 +31,7 @@ ProductDao dao;
 @Autowired
 ServletContext servletContext;
 @RequestMapping(value=command, method = RequestMethod.GET)
-public String doAction(@RequestParam("num") String num, Model model, HttpSession session) {
+public String doAction(@RequestParam("num") int num, Model model, HttpSession session) {
 	if (session.getAttribute("loginInfo")==null) {
 		session.setAttribute("destination", "redirect:/update.prd?num="+num);
 		return "redirect:/loginForm.me";
