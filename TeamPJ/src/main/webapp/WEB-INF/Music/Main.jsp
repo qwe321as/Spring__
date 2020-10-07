@@ -201,6 +201,8 @@
 						</div>
 					</div>
 				</div>
+				
+				
 				<div class="col-md-6 top-slider">
 					<div id="carousel-example-generic" class="carousel slide"
 						data-ride="carousel">
@@ -210,6 +212,7 @@
 								class="active"></li>
 							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="3"></li>
 						</ol>
 
 						<!-- Wrapper for slides -->
